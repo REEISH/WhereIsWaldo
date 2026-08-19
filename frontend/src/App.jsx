@@ -65,7 +65,7 @@ export default function WheresWaldoApp() {
 
   const handleCharacterSelect = async (character) => {
     try {
-      const response = await fetch("${API_URL}/api/game/validate", {
+      const response = await fetch(`${API_URL}/api/game/validate`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -105,7 +105,7 @@ export default function WheresWaldoApp() {
   };
 
   const submitScore = async () => {
-    await fetch("${API_URL}/api/leaderboard", {
+    await fetch(`${API_URL}/api/leaderboard`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -121,7 +121,7 @@ export default function WheresWaldoApp() {
     setLeaderboardLoading(true);
     setLeaderboardData({ title: scene.title, scores: [] });
     try {
-      const res = await fetch("${API_URL}/api/leaderboard/${scene.id}");
+      const res = await fetch(`${API_URL}/api/leaderboard/${scene.id}`);
       const data = await res.json();
 
       if (Array.isArray(data)) {
