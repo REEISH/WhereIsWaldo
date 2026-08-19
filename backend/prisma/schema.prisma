@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Map {
+  id          String        @id @default(uuid())
+  slug        String        @unique // "doraemon", "it", "lotr"
+  title       String
+  imageUrl    String
+  characters  Character[]
+  scores      Leaderboard[]
+}
+
+model Character {
+  id        String   @id @default(uuid())
+  name      String
+  mapId     String
+  map       Map      @relation(fields: [mapId], references: [id], onDelete: Cascade)
+  // Bounding box coordinate boundaries in percentages (0.00 to 100.00)
+  minX      Float
+  maxX      Float
+  minY      Float
+  maxY      Float
+}
+
+model Leaderboard {
+  id             String   @id @default(uuid())
+  playerName     String
+  timeInSeconds  Float
+  mapId          String
+  map            Map      @relation(fields: [mapId], references: [id], onDelete: Cascade)
+  createdAt      DateTime @default(now())
+}
