@@ -4,7 +4,7 @@ A classic "Where's Waldo" style photo-tagging game spanning three wildly differe
 
 ##  Live Demo
 
-**Play the game here:** [https://zesty-pie-2e0c9e.netlify.app/](https://zesty-pie-2e0c9e.netlify.app/)
+**Play the game here:** [Where's Waldo](https://zesty-pie-2e0c9e.netlify.app/)
 
 ## Features
 
